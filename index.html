@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kimberly Waite Strategic Operations</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --charcoal: #1a1a1a;
+    --charcoal-light: #2a2a2a;
+    --warm-white: #f8f6f3;
+    --off-white: #edeae5;
+    --gold: #b8975a;
+    --gold-muted: #a68a52;
+    --gold-light: rgba(184, 151, 90, 0.12);
+    --sage: #8a9a8e;
+    --steel: #7a8a96;
+    --text-primary: #1a1a1a;
+    --text-secondary: #5a5a58;
+    --text-light: #8a8a88;
+    --border: rgba(26, 26, 26, 0.08);
+    --border-dark: rgba(248, 246, 243, 0.1);
+    --serif: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+    --sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; font-size: 16px; }
+
+  body {
+    font-family: var(--sans);
+    color: var(--text-primary);
+    background: var(--warm-white);
+    line-height: 1.7;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    padding: 0 clamp(1.5rem, 5vw, 4rem);
+    height: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(248, 246, 243, 0.92);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+    transition: background 0.3s ease;
+  }
+
+  .nav-logo {
+    font-family: var(--serif);
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--charcoal);
+    letter-spacing: -0.01em;
+    text-decoration: none;
+  }
+
+  .nav-logo span { color: var(--gold); }
+
+  .nav-links { display: flex; gap: 2rem; align-items: center; }
+
+  .nav-links a {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    text-decoration: none;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    transition: color 0.25s ease;
+    position: relative;
+  }
+
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: var(--gold);
+    transition: width 0.3s ease;
+  }
+
+  .nav-links a:hover { color: var(--charcoal); }
+  .nav-links a:hover::after { width: 100%; }
+
+  .nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+  }
+
+  .nav-toggle span {
+    display: block;
+    width: 22px;
+    height: 1.5px;
+    background: var(--charcoal);
+    margin: 5px 0;
+    transition: all 0.3s ease;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 7rem clamp(1.5rem, 5vw, 4rem) 5rem;
+    background: var(--charcoal);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 70%;
+    height: 200%;
+    background: radial-gradient(ellipse, rgba(184, 151, 90, 0.04) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-inner {
+    max-width: 860px;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-tag {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 2.5rem;
+    position: relative;
+  }
+
+  .hero-geo {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    background: var(--gold);
+    opacity: 0.8;
+    transform: rotate(45deg);
+  }
+
+  .hero-tag::before,
+  .hero-tag::after {
+    content: '';
+    display: inline-block;
+    width: 28px;
+    height: 1px;
+    background: var(--gold-muted);
+    vertical-align: middle;
+    margin: 0 1rem;
+    opacity: 0.5;
+  }
+
+  .hero h1 {
+    font-family: var(--serif);
+    font-size: clamp(2.6rem, 5.5vw, 4.2rem);
+    font-weight: 500;
+    line-height: 1.15;
+    color: var(--warm-white);
+    letter-spacing: -0.02em;
+    margin-bottom: 1.8rem;
+  }
+
+  .hero p {
+    font-size: clamp(1.05rem, 1.6vw, 1.2rem);
+    color: rgba(248, 246, 243, 0.55);
+    max-width: 540px;
+    margin: 0 auto 3rem;
+    line-height: 1.75;
+    font-weight: 300;
+  }
+
+  .btn-primary {
+    display: inline-block;
+    font-family: var(--sans);
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--charcoal);
+    background: var(--gold);
+    padding: 1rem 2.6rem;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.35s ease;
+  }
+
+  .btn-primary:hover {
+    background: var(--warm-white);
+    color: var(--charcoal);
+    transform: translateY(-1px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+  }
+
+  /* ── SECTIONS ── */
+  section {
+    padding: clamp(5rem, 10vw, 8rem) clamp(1.5rem, 5vw, 4rem);
+  }
+
+  .container {
+    max-width: 1060px;
+    margin: 0 auto;
+  }
+
+  .section-tag {
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+  }
+
+  .section-heading {
+    font-family: var(--serif);
+    font-size: clamp(2rem, 3.5vw, 2.8rem);
+    font-weight: 500;
+    line-height: 1.2;
+    color: var(--charcoal);
+    letter-spacing: -0.015em;
+    margin-bottom: 2rem;
+  }
+
+  .section-body {
+    font-size: 1.02rem;
+    color: var(--text-secondary);
+    line-height: 1.8;
+    max-width: 640px;
+    font-weight: 400;
+  }
+
+  .divider {
+    width: 48px;
+    height: 1px;
+    background: var(--gold);
+    opacity: 0.4;
+    margin: 3.5rem 0;
+  }
+
+  /* ── ABOUT ── */
+  #about { background: var(--warm-white); }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.3fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .about-right .section-body + .section-body { margin-top: 1.2rem; }
+
+  /* ── SERVICES ── */
+  #services { background: var(--off-white); }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 3.5rem;
+  }
+
+  .service-card {
+    background: var(--warm-white);
+    padding: 2.8rem 2.2rem;
+    border: 1px solid var(--border);
+    transition: all 0.35s ease;
+    position: relative;
+  }
+
+  .service-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--gold);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s ease;
+  }
+
+  .service-card:hover {
+    border-color: rgba(184, 151, 90, 0.2);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.04);
+  }
+
+  .service-card:hover::before { transform: scaleX(1); }
+
+  .service-icon {
+    width: 36px;
+    height: 36px;
+    margin-bottom: 1.8rem;
+    position: relative;
+  }
+
+  .service-icon svg {
+    width: 100%;
+    height: 100%;
+    stroke: var(--gold);
+    stroke-width: 1.2;
+    fill: none;
+  }
+
+  .service-card h3 {
+    font-family: var(--serif);
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--charcoal);
+    margin-bottom: 0.9rem;
+    letter-spacing: -0.01em;
+  }
+
+  .service-card p {
+    font-size: 0.92rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+  }
+
+  /* ── SITUATIONS ── */
+  #situations { background: var(--warm-white); }
+
+  .situations-list {
+    list-style: none;
+    margin-top: 2.5rem;
+    max-width: 720px;
+  }
+
+  .situations-list li {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    padding-left: 1.2rem;
+  }
+
+  .situations-list li:first-child { border-top: 1px solid var(--border); }
+
+  .situations-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 4px;
+    background: var(--gold);
+    border-radius: 50%;
+    opacity: 0.6;
+  }
+
+  /* ── CLIENTS ── */
+  #clients { background: var(--off-white); }
+
+  .clients-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    margin-top: 3.5rem;
+  }
+
+  .client-card {
+    padding: 2.4rem 2.2rem;
+    border: 1px solid var(--border);
+    background: var(--warm-white);
+    transition: all 0.3s ease;
+  }
+
+  .client-card:hover {
+    border-color: rgba(184, 151, 90, 0.2);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.03);
+  }
+
+  .client-quote {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    font-weight: 400;
+    font-style: italic;
+    color: var(--text-primary);
+    line-height: 1.7;
+    margin-bottom: 1.4rem;
+  }
+
+  .client-attribution {
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    letter-spacing: 0.02em;
+  }
+
+  .client-role {
+    font-size: 0.72rem;
+    color: var(--text-light);
+    margin-top: 0.2rem;
+    letter-spacing: 0.02em;
+  }
+
+  @media (max-width: 900px) {
+    .clients-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ── APPROACH ── */
+  #approach { background: var(--charcoal); }
+  #approach .section-tag { color: var(--gold); }
+  #approach .section-heading { color: var(--warm-white); }
+  #approach .section-body { color: rgba(248, 246, 243, 0.6); }
+  #approach .divider { background: var(--gold); }
+
+  .approach-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem;
+    margin-top: 3.5rem;
+  }
+
+  .approach-item {
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border-dark);
+  }
+
+  .approach-number {
+    font-family: var(--serif);
+    font-size: 1.8rem;
+    font-weight: 400;
+    color: var(--gold);
+    margin-bottom: 1rem;
+    opacity: 0.6;
+  }
+
+  .approach-item h3 {
+    font-family: var(--serif);
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--warm-white);
+    margin-bottom: 0.8rem;
+  }
+
+  .approach-item p {
+    font-size: 0.9rem;
+    color: rgba(248, 246, 243, 0.5);
+    line-height: 1.75;
+  }
+
+  /* ── LEADERSHIP ── */
+  #leadership { background: var(--warm-white); }
+
+  .leadership-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    margin-top: 3.5rem;
+  }
+
+  .leader-card {
+    padding: 2.8rem 2.4rem;
+    border: 1px solid var(--border);
+    background: var(--warm-white);
+    transition: all 0.3s ease;
+  }
+
+  .leader-card:hover {
+    border-color: rgba(184, 151, 90, 0.2);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.03);
+  }
+
+  .leader-name {
+    font-family: var(--serif);
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--charcoal);
+    margin-bottom: 0.4rem;
+  }
+
+  .leader-title {
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.4rem;
+  }
+
+  .leader-card p {
+    font-size: 0.94rem;
+    color: var(--text-secondary);
+    line-height: 1.75;
+  }
+
+  /* ── CONTACT ── */
+  #contact { background: var(--off-white); }
+
+  .contact-inner {
+    max-width: 560px;
+  }
+
+  .contact-availability {
+    display: inline-block;
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--sage);
+    margin-top: 2.5rem;
+    padding: 0.6rem 1.2rem;
+    border: 1px solid rgba(138, 154, 142, 0.25);
+  }
+
+  .contact-email {
+    display: inline-block;
+    margin-top: 2rem;
+  }
+
+  .contact-email a {
+    font-family: var(--serif);
+    font-size: 1.3rem;
+    color: var(--charcoal);
+    text-decoration: none;
+    border-bottom: 1px solid var(--gold);
+    padding-bottom: 2px;
+    transition: all 0.25s ease;
+  }
+
+  .contact-email a:hover {
+    color: var(--gold);
+    border-bottom-color: transparent;
+  }
+
+  .contact-form {
+    margin-top: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+
+  .form-group { position: relative; }
+
+  .form-group label {
+    display: block;
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-light);
+    margin-bottom: 0.5rem;
+  }
+
+  .form-group input,
+  .form-group textarea {
+    width: 100%;
+    font-family: var(--sans);
+    font-size: 0.95rem;
+    color: var(--charcoal);
+    background: var(--warm-white);
+    border: 1px solid rgba(26, 26, 26, 0.12);
+    padding: 0.9rem 1.1rem;
+    outline: none;
+    transition: border-color 0.25s ease;
+  }
+
+  .form-group input:focus,
+  .form-group textarea:focus {
+    border-color: var(--gold);
+  }
+
+  .form-group textarea { resize: vertical; min-height: 120px; }
+
+  .btn-submit {
+    align-self: flex-start;
+    font-family: var(--sans);
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--warm-white);
+    background: var(--charcoal);
+    padding: 1rem 2.4rem;
+    border: 1px solid var(--charcoal);
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .btn-submit:hover {
+    background: var(--gold);
+    border-color: var(--gold);
+    color: var(--charcoal);
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    padding: 3rem clamp(1.5rem, 5vw, 4rem);
+    background: var(--charcoal);
+    border-top: 1px solid var(--border-dark);
+  }
+
+  .footer-inner {
+    max-width: 1060px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-text {
+    font-size: 0.8rem;
+    color: rgba(248, 246, 243, 0.35);
+    letter-spacing: 0.02em;
+  }
+
+  .footer-links { display: flex; gap: 1.8rem; }
+
+  .footer-links a {
+    font-size: 0.75rem;
+    color: rgba(248, 246, 243, 0.35);
+    text-decoration: none;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    transition: color 0.25s ease;
+  }
+
+  .footer-links a:hover { color: var(--gold); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .nav-links { display: none; }
+    .nav-links.open {
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      top: 72px;
+      left: 0;
+      right: 0;
+      background: rgba(248, 246, 243, 0.98);
+      backdrop-filter: blur(16px);
+      padding: 2rem clamp(1.5rem, 5vw, 4rem);
+      gap: 1.2rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-toggle { display: block; }
+    .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .services-grid { grid-template-columns: 1fr; }
+    .approach-grid { grid-template-columns: 1fr; }
+    .leadership-grid { grid-template-columns: 1fr; }
+    .footer-inner { flex-direction: column; gap: 1.2rem; text-align: center; }
+  }
+
+  /* ── ANIMATIONS ── */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Kimberly Waite<span> ·</span> Strategic Operations</a>
+  <div class="nav-links" id="navLinks">
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#situations">Situations</a>
+    <a href="#clients">Clients</a>
+    <a href="#approach">Approach</a>
+    <a href="#leadership">Leadership</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-tag">
+      <span class="hero-geo"></span>
+    </div>
+    <h1>Fractional executive leadership for high-stakes startup transitions</h1>
+    <p>Helping venture-backed startups navigate founder conflict, governance challenges, investor coordination, and operational complexity.</p>
+    <a href="#contact" class="btn-primary">Discuss an Engagement</a>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-left">
+        <div class="section-tag">About</div>
+        <h2 class="section-heading">Strategic operations for venture-backed companies</h2>
+      </div>
+      <div class="about-right fade-in">
+        <p class="section-body">Kimberly Waite Strategic Operations provides fractional CEO and COO leadership to venture-backed startups at Seed and Series&nbsp;A. We work with founders during critical operational moments&mdash;governance challenges, founder conflict, board coordination, investor relations, and organizational restructuring.</p>
+        <p class="section-body">We step in when companies are stuck, whether conflict is slowing execution, decisions aren&rsquo;t getting made, or founders need senior operational support without a full-time hire.</p>
+        <p class="section-body">We work directly with founders, boards, and legal teams to establish clarity, align stakeholders, and maintain operational continuity while key decisions are resolved.</p>
+        <div class="divider"></div>
+        <p class="section-body" style="font-size: 0.9rem; color: var(--text-light); font-style: italic;">We work with a small number of companies at a time, by design.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="container">
+    <div class="section-tag">Services</div>
+    <h2 class="section-heading">How we work with founders</h2>
+    <div class="services-grid">
+      <div class="service-card fade-in">
+        <div class="service-icon">
+          <svg viewBox="0 0 36 36"><circle cx="18" cy="12" r="6"/><path d="M6 32c0-7 5.4-12 12-12s12 5 12 12"/></svg>
+        </div>
+        <h3>Fractional CEO / COO</h3>
+        <p>Operational leadership embedded within your team. We bring executive-level structure, decision-making, and accountability to Seed and Series&nbsp;A startups that need senior leadership without a full-time hire.</p>
+      </div>
+      <div class="service-card fade-in">
+        <div class="service-icon">
+          <svg viewBox="0 0 36 36"><rect x="6" y="6" width="24" height="24" rx="3"/><line x1="18" y1="6" x2="18" y2="30"/><line x1="6" y1="18" x2="30" y2="18"/></svg>
+        </div>
+        <h3>Founder Conflict &amp; Governance</h3>
+        <p>Helping founders and boards navigate difficult decisions&mdash;equity disputes, role transitions, governance breakdowns, and the conversations that need to happen but haven&rsquo;t yet.</p>
+      </div>
+      <div class="service-card fade-in">
+        <div class="service-icon">
+          <svg viewBox="0 0 36 36"><path d="M18 4l14 8v12l-14 8L4 24V12z"/><circle cx="18" cy="18" r="4"/></svg>
+        </div>
+        <h3>Critical Transitions</h3>
+        <p>Executive leadership during consequential company transitions&mdash;restructurings, leadership changes, investor-driven transitions, and periods of instability that require calm judgment, rapid clarity, and operational control.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REPRESENTATIVE SITUATIONS -->
+<section id="situations">
+  <div class="container">
+    <div class="section-tag">Representative Situations</div>
+    <h2 class="section-heading">Where we're typically engaged</h2>
+    <ul class="situations-list fade-in">
+      <li>Founder conflict affecting company execution</li>
+      <li>Board-driven leadership transitions and governance restructuring</li>
+      <li>Operational stabilization after security incidents or product crises</li>
+      <li>Investor coordination during periods of organizational instability</li>
+      <li>Litigation coordination and operational leadership during legal disputes</li>
+      <li>Executive support when founders or boards need experienced operational leadership to stabilize the company</li>
+    </ul>
+  </div>
+</section>
+
+<!-- TRUSTED BY -->
+<section id="clients">
+  <div class="container">
+    <div class="section-tag">Trusted By</div>
+    <h2 class="section-heading">Trusted by</h2>
+    <div class="clients-grid">
+      <div class="client-card fade-in">
+        <p class="client-quote">&ldquo;She brought clarity to a situation that had paralyzed our leadership team for months. Within weeks, we had a path forward.&rdquo;</p>
+        <div class="client-attribution">Founder &amp; CEO</div>
+        <div class="client-role">Series A SaaS Company</div>
+      </div>
+      <div class="client-card fade-in">
+        <p class="client-quote">&ldquo;Kimberly operates with the kind of calm authority that you need when everything else feels like it&rsquo;s on fire.&rdquo;</p>
+        <div class="client-attribution">Partner</div>
+        <div class="client-role">Early-Stage Venture Fund</div>
+      </div>
+      <div class="client-card fade-in">
+        <p class="client-quote">&ldquo;We brought her in during a governance crisis. She stabilized the company and rebuilt trust between the founders and the board.&rdquo;</p>
+        <div class="client-attribution">General Counsel</div>
+        <div class="client-role">Venture-Backed Startup</div>
+      </div>
+      <div class="client-card fade-in">
+        <p class="client-quote">&ldquo;The kind of operational leadership that most startups don&rsquo;t know they need until they&rsquo;re in crisis.&rdquo;</p>
+        <div class="client-attribution">Board Member</div>
+        <div class="client-role">Seed-Stage Portfolio Company</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- APPROACH -->
+<section id="approach">
+  <div class="container">
+    <div class="section-tag">Approach</div>
+    <h2 class="section-heading">Clarity, structure, forward motion</h2>
+    <p class="section-body">Companies rarely stall because of a lack of ideas. They stall when decisions aren&rsquo;t getting made, roles are unclear, and tension goes unaddressed. We work with founders and stakeholders to resolve what&rsquo;s blocking progress and move the company forward.</p>
+    <div class="approach-grid">
+      <div class="approach-item fade-in">
+        <div class="approach-number">01</div>
+        <h3>Reveal</h3>
+        <p>Identify the real issues beneath the surface&mdash;misaligned incentives, unspoken conflict, structural weaknesses, and decisions that have been deferred too long.</p>
+      </div>
+      <div class="approach-item fade-in">
+        <div class="approach-number">02</div>
+        <h3>Resolve</h3>
+        <p>Create clarity around roles, authority, governance, and next steps so difficult conversations can lead to actual decisions.</p>
+      </div>
+      <div class="approach-item fade-in">
+        <div class="approach-number">03</div>
+        <h3>Stabilize</h3>
+        <p>Build the operational structure, communication cadence, and accountability systems needed for the company to move forward with coherence.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LEADERSHIP -->
+<section id="leadership">
+  <div class="container">
+    <div class="section-tag">Leadership</div>
+    <div class="leadership-grid" style="margin-top: 0;">
+      <div class="leader-card fade-in">
+        <div class="leader-name">Kimberly Waite</div>
+        <div class="leader-title">Fractional CEO / COO</div>
+        <p>Kimberly leads high-stakes engagements for venture-backed startups navigating founder conflict, governance challenges, and operational instability. She works directly with founders, boards, investors, and legal teams to surface what is actually happening, establish clarity, and move companies forward.</p>
+      </div>
+      <div class="leader-card fade-in">
+        <div class="leader-name">Christopher Shenefelt</div>
+        <div class="leader-title">Chief of Staff &amp; Operations</div>
+        <p>Christopher supports execution, coordination, and operational continuity across all engagements. He ensures that decisions translate into action, stakeholders stay aligned, and the operational infrastructure we build actually holds.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="contact-inner">
+      <div class="section-tag">Contact</div>
+      <h2 class="section-heading">Discuss an engagement</h2>
+      <p class="section-body">If your company is navigating a difficult operational moment and needs experienced executive leadership, we&rsquo;d like to hear from you.</p>
+      <div class="contact-availability">Currently accepting a limited number of engagements</div>
+      <form class="contact-form fade-in" onsubmit="handleSubmit(event)">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" required autocomplete="name">
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required autocomplete="email">
+        </div>
+        <div class="form-group">
+          <label for="company">Company</label>
+          <input type="text" id="company" name="company" autocomplete="organization">
+        </div>
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" required></textarea>
+        </div>
+        <button type="submit" class="btn-submit">Send Message</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-text">&copy; 2026 Kimberly Waite Strategic Operations</div>
+    <div class="footer-links">
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#situations">Situations</a>
+      <a href="#contact">Contact</a>
+      <a href="https://www.linkedin.com/in/kimberly-waite-8294973b6" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Mobile nav toggle
+  const toggle = document.getElementById('navToggle');
+  const links = document.getElementById('navLinks');
+  toggle.addEventListener('click', () => links.classList.toggle('open'));
+  links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => links.classList.remove('open')));
+
+  // Scroll fade-in
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  // Form handler (placeholder)
+  function handleSubmit(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('.btn-submit');
+    btn.textContent = 'Message Sent';
+    btn.style.background = 'var(--gold)';
+    btn.style.borderColor = 'var(--gold)';
+    btn.style.color = 'var(--charcoal)';
+    btn.disabled = true;
+    setTimeout(() => {
+      btn.textContent = 'Send Message';
+      btn.style.background = '';
+      btn.style.borderColor = '';
+      btn.style.color = '';
+      btn.disabled = false;
+      e.target.reset();
+    }, 3000);
+  }
+</script>
+
+</body>
+</html>
